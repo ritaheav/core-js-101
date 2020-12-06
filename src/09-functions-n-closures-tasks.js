@@ -108,17 +108,17 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
+  let res;
+  let i = 0;
   return () => {
-    while (true) {
+    while (!res && i < attempts) {
       try {
-        const res = func();
-        return res;
-      } catch (err) {
-        if (--attempts < 0) {
-          throw err;
-        }
+        res = func.call(this);
+      } catch (e) {
+        i += 1;
       }
     }
+    return res;
   };
 }
 

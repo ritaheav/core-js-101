@@ -332,15 +332,15 @@ function isBracketsBalanced(str) {
   let size = 0;
   const openBrackets = ['[', '{', '(', '<'];
   const closeBrackets = [']', '}', ')', '>'];
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     if (openBrackets.indexOf(str[i]) !== -1) {
       stack[size] = str[i];
-      size++;
+      size += 1;
     } else if (closeBrackets.indexOf(str[i]) !== -1) {
       if (size === 0) { return false; }
       const index = closeBrackets.indexOf(str[i]);
       if (stack[size - 1] === openBrackets[index]) {
-        size--;
+        size -= 1;
       } else {
         return false;
       }
@@ -422,11 +422,11 @@ function getCommonDirectoryPath(pathes) {
  */
 function getMatrixProduct(m1, m2) {
   const result = [];
-  for (let i = 0; i < m1.length; i++) {
+  for (let i = 0; i < m1.length; i += 1) {
     result[i] = [];
-    for (let j = 0; j < m2[0].length; j++) {
+    for (let j = 0; j < m2[0].length; j += 1) {
       let sum = 0;
-      for (let k = 0; k < m1[0].length; k++) {
+      for (let k = 0; k < m1[0].length; k += 1) {
         sum += m1[i][k] * m2[k][j];
       }
       result[i][j] = sum;
@@ -471,7 +471,7 @@ function evaluateTicTacToePosition(position) {
   && (position[1][1] === position[2][2])) if (position[0][0]) return position[0][0];
   if ((position[0][2] === position[1][1]) && (position[0][2] === position[2][0])
   && (position[1][1] === position[2][0])) if (position[0][2]) return position[0][2];
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i += 1) {
     if ((position[i][0] === position[i][1]) && (position[i][0] === position[i][2])
   && (position[i][1] === position[i][2])) if (position[i][0]) return position[i][1];
     if ((position[0][i] === position[1][i]) && (position[0][i] === position[2][i])
